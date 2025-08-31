@@ -1,17 +1,21 @@
 version: '3.8'
 services:
+  # Service for backend API
   backend:
     build: ./backend
     ports:
       - '5000:5000'
     environment:
+      # MongoDB connection string
       - MONGO_URI=mongodb://mongo:27017/hotel_booking
     depends_on:
       - mongo
+  # Service for frontend application
   frontend:
     build: ./frontend
     ports:
       - '3000:3000'
+  # Service for MongoDB database
   mongo:
     image: mongo
     ports:
