@@ -34,7 +34,7 @@ services:
       - '27017:27017'
     restart: always  # Restart policy to ensure service availability
     healthcheck:
-      test: [ 'CMD', 'mongo', '--eval', 'db.adminCommand("ping")' ]
+      test: [ 'CMD', 'mongo', '--eval', 'db.adminCommand("ping")' ]  # Healthcheck for MongoDB
       interval: 30s
       timeout: 10s
       retries: 5
