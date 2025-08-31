@@ -11,6 +11,11 @@ services:
     depends_on:
       - mongo
     restart: always  # Restart policy to ensure service availability
+    healthcheck:
+      test: [ 'CMD', 'curl', '-f', 'http://localhost:5000/health' ]  # Healthcheck for backend
+      interval: 30s
+      timeout: 10s
+      retries: 5
   # Service for frontend application
   frontend:
     build: ./frontend
